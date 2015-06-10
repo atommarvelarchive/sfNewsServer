@@ -2,17 +2,22 @@ var cheerio = require('cheerio'),
     sources = require('./sources.js'),
     Story = require('./story.js');
 
-function parse(domain, data){
+function parse(domain, data, callback){
     switch(domain){
         case sources.sfusualsuspects.domain:
-            return usualSuspects(data);
+            usualSuspects(data, callback);
+            break;
+        case sources.sfist.domain:
+            rss(data, function(parsed){
+                massageSfist(parsed,callback);
+            })
             break;
         default:
-            return rss(data)
+            rss(data, callback)
     }
 }
 
-function usualSuspects(data){
+function usualSuspects(data, callback){
     var $ = cheerio.load(data),
         stories = $(".block"),
         results = [];
@@ -21,33 +26,35 @@ function usualSuspects(data){
         var title = $(this).find(".link").first().text().trimLeft().trimRight();
         var url = $(this).find(".link").first().attr("href");
         var desc = $(this).find(".extract").first().text().replace(/.*more/g,"").trimRight().trimLeft();
-        var img = $(this).find(".img-responsive").first().attr("src");
         var src = sources.sfusualsuspects.domain;
-        results.push(new Story(title, url, desc, img, src));
+        var img = $(this).find(".img-responsive").first().attr("src");
+        results.push(new Story(title, url, desc, src, img));
     });
-    return results;
+    callback(results);
 }
 
-function sfist(data){
-    var $ = cheerio.load(data),
-        stories = $(".item"),
-        results = [];
-
-    stories.each(function(){
-        var title = $(this).find(".header").first().text();
-        var url = $(this).find(".asset-more-link").first().attr("href");
-        var desc = $(this).find("span").first().text();
-        var img = $(this).find("img").first().attr("src").replace("_restrict_width_110","");
-        var src = sources.sfist.domain;
-        results.push(new Story(title, url, desc, img, src));
-    });
-    return results;
+//TODO: add hoodline support
+function hoodline(data, callback){
 }
 
-function rss(data){
-    parser.parseString(data, options, function(err, articles){
-        debugger;
-        console.log(articles);
+function massageSfist(stories, callback){
+    var result = [];
+    for(var i = 0; i < stories.length; i++){
+        var cur = stories[i],
+            $ = cheerio.load("<body>"+cur.summary+"</body>"),
+            title = cur.title,
+            url = cur.guid.link,
+            desc = $("body").text().replace(" [ more › ]",""),
+            src = sources.sfist.domain,
+            img = $("img").first().attr("src").replace("_restrict_width_110","");
+        result.push(new Story(title, url, desc, src, img));
+    }
+    callback(result);
+}
+
+function rss(data, callback){
+    parser.parseString(data, {}, function(err, articles){
+        callback(articles.items);
     }); 
 }
 

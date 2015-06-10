@@ -13,17 +13,22 @@ module.exports = function(data){
     function scrape(source){
         request(source.url, function (error, response, html) {
             if (!error && response.statusCode == 200) {
-                console.log(source.url+" loaded");
-                saveData(source, parser.parse(source.domain, html));
+                parser.parse(source.domain, html, saveData.bind(this, source));
             }
         });
     }
 
     function saveData(source, parsed){
         data[source.domain].data = parsed;
+        console.log(source.url+" loaded");
+    }
+
+    function refresh(source){
+        scrape(source);
     }
 
     this.refreshAll = refreshAll;
+    this.refresh = refresh;
     this.data = data;
     return this;
 };
