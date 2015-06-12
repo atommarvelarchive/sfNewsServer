@@ -19,7 +19,7 @@ module.exports = function(data){
     }
 
     function saveData(source, parsed){
-        data[source.domain].data = parsed;
+        data[source.domain].stories = parsed;
         console.log(source.url+" loaded");
     }
 

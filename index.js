@@ -18,4 +18,4 @@ app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'));
 });
 
-scraper.refresh(sources['7x7']);
+scraper.refreshAll();

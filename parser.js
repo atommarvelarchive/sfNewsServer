@@ -7,9 +7,24 @@ function parse(domain, data, callback){
         case sources.sfusualsuspects.domain:
             usualSuspects(data, callback);
             break;
+        case sources['7x7'].domain:
+            rss(data, function(parsed){
+                massage7x7(parsed,callback);
+            })
+            break;
         case sources.sfist.domain:
             rss(data, function(parsed){
                 massageSfist(parsed,callback);
+            })
+            break;
+        case sources.sfweekly.domain:
+            rss(data, function(parsed){
+                massageSfweekly(parsed,callback);
+            })
+            break;
+        case sources.sfgate.domain:
+            rss(data, function(parsed){
+                massageSfgate(parsed,callback);
             })
             break;
         default:
@@ -37,8 +52,41 @@ function usualSuspects(data, callback){
 function hoodline(data, callback){
 }
 
+function massage7x7(stories, callback){
+    var results = [];
+    for(var i = 0; i < stories.length; i++){
+        var cur = stories[i],
+            $ = cheerio.load("<body>"+cur.summary+"</body>"),
+            title = cur.title,
+            url = cur.url,
+            desc = $("body").text().substring(0,137)+"...";
+            src = sources.sfist.domain,
+            img = $("img").first().attr("src");
+            debugger;
+        results.push(new Story(title, url, desc, src, img));
+    }
+    callback(results);
+}
+
+function massageSfweekly(stories, callback){
+    var results = [];
+    for(var i = 0; i < stories.length; i++){
+        var cur = stories[i],
+            $ = cheerio.load("<body>"+cur.summary+"</body>"),
+            title = cur.title,
+            url = cur.url,
+            desc = $("body").text().replace(" [ Read more ] [ Subscribe to the comments on this story ]",""),
+            src = sources.sfist.domain,
+            img = $("img").first().attr("src");
+        results.push(new Story(title, url, desc, src, img));
+    }
+    callback(results);
+}
+
+//TODO gneral desc char limit
+
 function massageSfist(stories, callback){
-    var result = [];
+    var results = [];
     for(var i = 0; i < stories.length; i++){
         var cur = stories[i],
             $ = cheerio.load("<body>"+cur.summary+"</body>"),
@@ -47,9 +95,23 @@ function massageSfist(stories, callback){
             desc = $("body").text().replace(" [ more › ]",""),
             src = sources.sfist.domain,
             img = $("img").first().attr("src").replace("_restrict_width_110","");
-        result.push(new Story(title, url, desc, src, img));
+        results.push(new Story(title, url, desc, src, img));
     }
-    callback(result);
+    callback(results);
+}
+
+function massageSfgate(stories, callback){
+    var results = [];
+    for(var i = 0; i < stories.length; i++){
+        var cur = stories[i],
+            title = cur.title,
+            url = cur.guid.link,
+            desc = cur.summary,
+            src = sources.sfgate.domain,
+            img = "";
+        results.push(new Story(title, url, desc, src, img));
+    }
+    callback(results);
 }
 
 function rss(data, callback){

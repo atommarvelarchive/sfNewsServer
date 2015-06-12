@@ -11,12 +11,6 @@ module.exports = {
         domain: "sfist",
         name: "sfist"
     },
-    'hoodline': {
-        url : "http://feeds.hoodline.com/",
-        tags : ["all"],
-        domain: "hoodline",
-        name: "Hoodline"
-    },
     'sfgate': {
         url : "http://www.sfgate.com/bayarea/feed/Bay-Area-News-429.php",
         tags : ["all"],
@@ -36,3 +30,11 @@ module.exports = {
         name: "SF Weekly"
     }
 }
+
+later = {
+    'hoodline': {
+        url : "http://feeds.hoodline.com/",
+        tags : ["all"],
+        domain: "hoodline",
+        name: "Hoodline"
+    }}
