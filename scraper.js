@@ -19,7 +19,12 @@ module.exports = function(data){
     }
 
     function saveData(source, parsed){
-        data[source.domain].stories = parsed;
+        data[source.domain].stories = [];
+        for(var i = 0; i<parsed.length; i++){
+            parsed[i].getImg(function(story){
+                data[source.domain].stories.push(story);
+            });
+        }
         console.log(source.url+" loaded");
     }
 

@@ -1,3 +1,6 @@
+var cheerio = require('cheerio'),
+    request = require('request');
+
 module.exports = function(title, url, desc, src, img){
     var trim = 140;
 
@@ -10,10 +13,27 @@ module.exports = function(title, url, desc, src, img){
        }
     }
 
+    function getImg(callback){
+        var self = this;
+        request(self.url, function (error, response, html) {
+            var $ = cheerio.load(html),
+                og = $('head > meta[property="og:image"]'),
+                twitter = $('head > meta[name="twitter:image:src"]');
+            if(og){
+                self.img = og.attr("content");
+            }else if(twitter){
+                self.img = twitter.attr("content");
+            }else{
+            }
+            callback(self);
+        });
+    }
+
     this.title = title;
     this.url = url;
     this.desc = stringTrim(desc, trim);
     this.src = src;
-    this.img = img;
+    this.img = "";
+    this.getImg = getImg;
     return this;
 }

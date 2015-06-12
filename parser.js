@@ -1,4 +1,5 @@
 var cheerio = require('cheerio'),
+    request = require('request'),
     sources = require('./sources.js'),
     Story = require('./story.js');
 
@@ -43,7 +44,8 @@ function usualSuspects(data, callback){
         var desc = $(this).find(".extract").first().text().replace(/.*more/g,"").trimRight().trimLeft();
         var src = sources.sfusualsuspects.domain;
         var img = $(this).find(".img-responsive").first().attr("src");
-        results.push(new Story(title, url, desc, src, img));
+        var story = new Story(title, url, desc, src, img)
+        results.push(story);
     });
     callback(results);
 }
@@ -105,7 +107,7 @@ function massageSfgate(stories, callback){
     for(var i = 0; i < stories.length; i++){
         var cur = stories[i],
             title = cur.title,
-            url = cur.guid.link,
+            url = cur.url,
             desc = cur.summary,
             src = sources.sfgate.domain,
             img = "";
@@ -119,5 +121,6 @@ function rss(data, callback){
         callback(articles.items);
     }); 
 }
+
 
 exports.parse = parse;
