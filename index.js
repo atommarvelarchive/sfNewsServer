@@ -4,6 +4,7 @@ var data = {};
     scraper = require('./scraper.js')(data),
     parser = require('rssparser'),
     app = express();
+    require('events').EventEmitter.prototype._maxListeners = 100;
 
 app.set('port', (process.env.PORT || 5000));
 app.set('view engine', 'ejs');
@@ -18,4 +19,6 @@ app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'));
 });
 
+//TODO: Schedule scraping
+//scraper.scrape(sources["soylentnews"]);
 scraper.refreshAll();

@@ -1,40 +1,103 @@
-module.exports = {
+sf = {
     'sfusualsuspects': {
         url : "http://www.sfusualsuspects.com/",
-        tags : ["politics"],
+        tags : ["SF", "Politics"],
         domain: "sfusualsuspects",
         name: "The Usual Suspects"
     },
     'sfist': {
         url : "http://feeds.gothamistllc.com/SFist",
-        tags : ["all"],
+        tags : ["SF"],
         domain: "sfist",
         name: "sfist"
     },
     'sfgate': {
         url : "http://www.sfgate.com/bayarea/feed/Bay-Area-News-429.php",
-        tags : ["all"],
+        tags : ["SF"],
         domain: "sfgate",
         name: "SFGate"
     },
     '7x7': {
         url : "http://feeds.feedburner.com/7x7/bjKm?format=xml",
-        tags : ["all"],
+        tags : ["SF"],
         domain: "7x7",
         name: "7x7"
     },
     'sfweekly': {
         url : "http://www.sfweekly.com/sanfrancisco/Rss.xml?section=2124627",
-        tags : ["all"],
+        tags : ["SF"],
         domain: "sfweekly",
         name: "SF Weekly"
     }
 }
 
+technology = {
+    'redditTech':{
+        url : "http://www.reddit.com/r/algorithms+analytics+angularjs+linux+linuxdev+crypto+machinelearning+entrepreneur+webdev+web_design+computerscience+reactjs+javascript+frontend+css/.json?limit=100",
+        tags : ["tech"],
+        domain: "redditTech",
+        name: "Reddit Tech"
+    },
+    'news.ycombinator': {
+        url : "https://news.ycombinator.com/rss",
+        tags : ["tech"],
+        domain: "news.ycombinator",
+        name: "Hacker News"
+    },
+    'datatau': {
+        url : "http://datatau.com/rss",
+        tags : ["tech", "data"],
+        domain: "datatau",
+        name: "DataTau"
+    },
+    'dzone': {
+        url : "http://feeds.dzone.com/dzone/frontpage",
+        tags : ["tech"],
+        domain: "dzone",
+        name: "DZone"
+    },
+    'echojs': {
+        url : "http://www.echojs.com/rss",
+        tags : ["tech", "javascript", "html5", "front-end"],
+        domain: "echojs",
+        name: "Echo JS"
+    },
+    'lobsters': {
+        url : "https://lobste.rs/rss",
+        tags : ["tech"],
+        domain: "lobsters",
+        name: "Lobsters"
+    },
+    'slashdot': {
+        url : "http://rss.slashdot.org/slashdot/slashdotMain?format=xml",
+        tags : ["tech"],
+        domain: "slashdot",
+        name: "Slashdot"
+    },
+    'soylentnews': {
+        url : "https://soylentnews.org/index.rss",
+        tags : ["tech"],
+        domain: "soylentnews",
+        name: "Soylent News"
+    }
+};
+var sources = {};
+
+for(var source in sf){
+    sources[source] = sf[source];
+}
+for(var source in technology){
+    sources[source] = technology[source];
+}
+
+module.exports = sources;
+
+
 later = {
     'hoodline': {
         url : "http://feeds.hoodline.com/",
-        tags : ["all"],
+        tags : ["SF"],
         domain: "hoodline",
         name: "Hoodline"
-    }}
+    }
+};

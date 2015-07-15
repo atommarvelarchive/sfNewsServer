@@ -2,19 +2,28 @@ module.exports = function(data){
     var parser = require('./parser.js'),
         sources = require('./sources.js'),
         request = require('request');
+    fetchCount = 0,
+    fetchCap = 1,
     data = sources;
 
     function refreshAll(){
         for(source in sources){
-            scrape(sources[source]);
+            refresh(sources[source]);
         }
     }
 
     function scrape(source){
+        fetchCount++;
+        console.log("scraping "+source.url);
         request(source.url, function (error, response, html) {
             if (!error && response.statusCode == 200) {
+                console.log("got feed for "+ source.url);
                 parser.parse(source.domain, html, saveData.bind(this, source));
+            } else{
+                console.log(source.url + " didn't give a feed");
+                console.log(error);
             }
+
         });
     }
 
@@ -26,14 +35,20 @@ module.exports = function(data){
             });
         }
         console.log(source.url+" loaded");
+        fetchCount--;
     }
 
     function refresh(source){
-        scrape(source);
+        if(fetchCount < fetchCap){
+            scrape(source);
+        } else{
+            setTimeout(refresh.bind(this,source), 500);
+        }
     }
 
     this.refreshAll = refreshAll;
     this.refresh = refresh;
     this.data = data;
+    this.scrape = scrape;
     return this;
 };
