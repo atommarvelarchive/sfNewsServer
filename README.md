@@ -1,3 +1,12 @@
+# sfNews Server
+A Node service that scrapes and organizes the top Bay Area News Sources
+
+## Build & Run
+```
+npm install
+node index.js
+```
+
 ## TODO
 * Schedule scraping
 * Incorporate publish time
