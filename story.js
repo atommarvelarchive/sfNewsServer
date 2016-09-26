@@ -24,18 +24,17 @@ module.exports = function(title, url, desc, src, img, date, comments, meta){
                 if (!error && response.statusCode == 200) {
                     var $ = cheerio.load(html),
                         og = $('head > meta[property="og:image"]'),
-                        twitter = $('head > meta[name="twitter:image:src"]');
-                    //TODO: make twitter higher priority than og
-                    if(og.length > 0){
-                        var url = og.first().attr("content");
-                        if(!(/http/).test(url)){
-                            url = og.eq(1).attr("content");
-                        }
-                        self.img = url;
-                    }else if(twitter.length > 0){
+                        twitter = $('head > meta[name="twitter:image:src"]');                
+                    if(twitter.length > 0){
                         var url = twitter.first().attr("content");
                         if(!(/http/).test(url)){
                             url = twitter.eq(1).attr("content");
+                        }
+                        self.img = url;
+                    }else if(og.length > 0){
+                        var url = og.first().attr("content");
+                        if(!(/http/).test(url)){
+                            url = og.eq(1).attr("content");
                         }
                         self.img = url;
                     }else{
