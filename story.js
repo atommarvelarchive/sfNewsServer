@@ -5,6 +5,7 @@ module.exports = function(title, url, desc, src, img, date, comments, meta){
     var trim = 140;
 
     function stringTrim(str, trim){
+        if(!str || 0 === str.length) return "";
        var concat = "...";
        if(str.length > trim-concat.length){
            return str.slice(0,trim-concat.length)+concat;
@@ -13,14 +14,18 @@ module.exports = function(title, url, desc, src, img, date, comments, meta){
        }
     }
 
+    // TODO: add getDesc into getImg and rename to something like 'getMetaData'
+
     function getImg(callback){
         var self = this;
-        if(img === ""){
+        // TODO: fix whatever is making some img to not be properly populated
+        if(this.img === ""){
             request(self.url, function (error, response, html) {
                 if (!error && response.statusCode == 200) {
                     var $ = cheerio.load(html),
                         og = $('head > meta[property="og:image"]'),
                         twitter = $('head > meta[name="twitter:image:src"]');
+                    //TODO: make twitter higher priority than og
                     if(og.length > 0){
                         var url = og.first().attr("content");
                         if(!(/http/).test(url)){
@@ -34,7 +39,7 @@ module.exports = function(title, url, desc, src, img, date, comments, meta){
                         }
                         self.img = url;
                     }else{
-                        //console.log(self.url + " does not have a social image");
+                        console.log(self.url + " does not have a social image");
                         if(self.url.indexOf("7x7.com") !== -1){
                             self.img = $("#content").find("img").first().attr("src");
                         }
@@ -50,7 +55,7 @@ module.exports = function(title, url, desc, src, img, date, comments, meta){
     this.title = title;
     this.url = url;
     this.desc = stringTrim(desc, trim);
-    this.src = src;
+    this.src = src || "";
     this.img = img || "";
     this.getImg = getImg;
     if(comments){

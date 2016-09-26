@@ -17,9 +17,7 @@ function parse(domain, data, callback){
             })
             break;
         case sources.sfist.domain:
-            rss(data, function(parsed){
-                massageSfist(parsed,callback);
-            })
+            parseSfist(data,callback);
             break;
         case sources.sfweekly.domain:
             rss(data, function(parsed){
@@ -130,19 +128,18 @@ function massageSfweekly(stories, callback){
     callback(results);
 }
 
-function massageSfist(stories, callback){
+function parseSfist(xml, callback){
     var results = [];
     console.log("massaging sfist");
-    for(var i = 0; i < stories.length; i++){
-        var cur = stories[i],
-            $ = cheerio.load(cur.summary),
-            title = cur.title,
-            url = cur.guid.link,
-            desc = $("body").text().replace(" [ more › ]",""),
-            src = sources.sfist.domain,
-            img = $("img").first().attr("src").replace("_restrict_width_110","");
-        results.push(new Story(title, url, desc, src, img));
-    }
+    var $ = cheerio.load(xml, {xmlMode: true});
+    $("item").each(function(index, elem) {
+        var title = $(elem).find("title").text(),
+            url = $(elem).find("link").text();
+            //desc = summary("body").text().replace(" [ more › ]",""),
+            //src = sources.sfist.domain,
+            //img = summary("img").first().attr("src").replace("_restrict_width_110","");
+        results.push(new Story(title, url));
+    });
     callback(results);
 }
 
@@ -198,6 +195,7 @@ function massageYcombinator(stories,callback){
     }
     callback(results)
 }
+
 function massageDatatau(stories,callback){
     var results = [];
     console.log("massaging datatau");
@@ -210,11 +208,12 @@ function massageDatatau(stories,callback){
             desc = "",
             src = sources.datatau.domain,
             img = "";
-        //TODO comments 
+        //TODO comments
         results.push(new Story(title, url, desc, src, img));
     }
     callback(results)
 }
+
 function massageDzone(stories,callback){
     var results = [];
     console.log("massaging dzone");
@@ -232,6 +231,7 @@ function massageDzone(stories,callback){
     }
     callback(results)
 }
+
 function massageEchojs(stories,callback){
     var results = [];
     console.log("massaging echojs");
@@ -249,6 +249,7 @@ function massageEchojs(stories,callback){
     }
     callback(results)
 }
+
 function massageLobsters(stories,callback){
     var results = [];
     console.log("massaging lobsters");
@@ -265,6 +266,7 @@ function massageLobsters(stories,callback){
     }
     callback(results)
 }
+
 function massageSlashdot(stories,callback){
     var results = [];
     console.log("massaging slashdot");
@@ -282,6 +284,7 @@ function massageSlashdot(stories,callback){
     }
     callback(results)
 }
+
 function massageSoylentnews(stories,callback){
     var results = [];
     console.log("massaging soylentnews");
@@ -301,9 +304,12 @@ function massageSoylentnews(stories,callback){
 }
 
 function rss(data, callback){
+    debugger;
+    /**
     parser.parseString(data, {}, function(err, articles){
         callback(articles.items);
-    }); 
+    });
+    */
 }
 
 

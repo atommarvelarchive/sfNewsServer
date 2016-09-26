@@ -2,7 +2,6 @@ var data = {};
     express = require('express'),
     sources = require('./sources.js'),
     scraper = require('./scraper.js')(data),
-    parser = require('rssparser'),
     app = express();
     require('events').EventEmitter.prototype._maxListeners = 100;
 
@@ -20,5 +19,5 @@ app.listen(app.get('port'), function() {
 });
 
 //TODO: Schedule scraping
-//scraper.scrape(sources["soylentnews"]);
-scraper.refreshAll();
+scraper.scrape(sources["sfist"]);
+//scraper.refreshAll();
