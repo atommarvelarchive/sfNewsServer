@@ -30,9 +30,7 @@ function parse(domain, data, callback){
             parseDzone(data, callback);
             break;
         case sources.echojs.domain:
-            rss(data, function(parsed){
-                massageEchojs(parsed, callback);
-            })
+            parseEchojs(data, callback);
             break;
         case sources.lobsters.domain:
             rss(data, function(parsed){
@@ -160,22 +158,9 @@ function parseDzone(xml,callback){
     defaultParser(xml, callback);
 }
 
-function massageEchojs(stories,callback){
-    var results = [];
+function parseEchojs(xml,callback){
     console.log("massaging echojs");
-    debugger;
-    for(var i = 0; i < stories.length; i++){
-        var cur = stories[i];
-            //$ = cheerio.load(cur),
-            title = cur.title,
-            url = cur.url,
-            desc = cur.summary,
-            src = sources.echojs.domain,
-            img = "";
-        //TODO comments
-        results.push(new Story(title, url, desc, src, img));
-    }
-    callback(results)
+    defaultParser(xml, callback);
 }
 
 function massageLobsters(stories,callback){
@@ -235,8 +220,8 @@ function defaultParser(xml, callback) {
     var results = [],
         $ = cheerio.load(xml, {xmlMode: true});
     $("item").each(function(index, elem) {
-        var title = $(elem).find("title").text(),
-            url = $(elem).find("link").text();
+        var title = $(elem).find("title").text().trim(),
+            url = $(elem).find("link").text().trim();
             //desc = summary("body").text().replace(" [ more › ]",""),
             //src = sources.sfist.domain,
             //img = summary("img").first().attr("src").replace("_restrict_width_110","");

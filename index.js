@@ -19,5 +19,5 @@ app.listen(app.get('port'), function() {
 });
 
 //TODO: Schedule scraping
-scraper.scrape(sources["dzone"]);
+scraper.scrape(sources["echojs"]);
 //scraper.refreshAll();
