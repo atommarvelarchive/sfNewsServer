@@ -24,19 +24,10 @@ function parse(domain, data, callback){
             massageReddit(JSON.parse(data),callback);
             break;
         case sources["news.ycombinator"].domain:
-            rss(data, function(parsed){
-                massageYcombinator(parsed, callback);
-            })
-            break;
-        case sources.datatau.domain:
-            rss(data, function(parsed){
-                massageDatatau(parsed, callback);
-            })
+            parseYcombinator(data, callback);
             break;
         case sources.dzone.domain:
-            rss(data, function(parsed){
-                massageDzone(parsed, callback);
-            })
+            parseDzone(data, callback);
             break;
         case sources.echojs.domain:
             rss(data, function(parsed){
@@ -104,48 +95,18 @@ function massage7x7(stories, callback){
 }
 
 function parseSfweekly(xml, callback){
-    var results = [];
     console.log("parsing SFWeekly");
-    var $ = cheerio.load(xml, {xmlMode: true});
-    $("item").each(function(index, elem) {
-        var title = $(elem).find("title").text(),
-            url = $(elem).find("link").text();
-            //desc = summary("body").text().replace(" [ more › ]",""),
-            //src = sources.sfist.domain,
-            //img = summary("img").first().attr("src").replace("_restrict_width_110","");
-        results.push(new Story(title, url));
-    });
-    callback(results);
+    defaultParser(xml, callback);
 }
 
 function parseSfist(xml, callback){
-    var results = [];
     console.log("parsing sfist");
-    var $ = cheerio.load(xml, {xmlMode: true});
-    $("item").each(function(index, elem) {
-        var title = $(elem).find("title").text(),
-            url = $(elem).find("link").text();
-            //desc = summary("body").text().replace(" [ more › ]",""),
-            //src = sources.sfist.domain,
-            //img = summary("img").first().attr("src").replace("_restrict_width_110","");
-        results.push(new Story(title, url));
-    });
-    callback(results);
+    defaultParser(xml, callback);
 }
 
 function parseSfgate(xml, callback){
-    var results = [];
     console.log("parsing sfgate");
-    var $ = cheerio.load(xml, {xmlMode: true});
-    $("item").each(function(index, elem) {
-        var title = $(elem).find("title").text(),
-            url = $(elem).find("link").text();
-            //desc = summary("body").text().replace(" [ more › ]",""),
-            //src = sources.sfist.domain,
-            //img = summary("img").first().attr("src").replace("_restrict_width_110","");
-        results.push(new Story(title, url));
-    });
-    callback(results);
+    defaultParser(xml, callback);
 }
 
 function massageReddit(stories, callback){
@@ -170,22 +131,9 @@ function massageReddit(stories, callback){
     callback(results);
 }
 
-function massageYcombinator(stories,callback){
-    var results = [];
-    console.log("massaging Ycombinator");
-    debugger;
-    for(var i = 0; i < stories.length; i++){
-        var cur = stories[i];
-            //$ = cheerio.load(cur),
-            title = cur.title,
-            url = cur.url,
-            desc = "",
-            src = sources["news.ycombinator"].domain,
-            img = "";
-        //TODO comments
-        results.push(new Story(title, url, desc, src, img));
-    }
-    callback(results)
+function parseYcombinator(xml,callback){
+    console.log("parsing YCombinator");
+    defaultParser(xml, callback);
 }
 
 function massageDatatau(stories,callback){
@@ -206,22 +154,10 @@ function massageDatatau(stories,callback){
     callback(results)
 }
 
-function massageDzone(stories,callback){
+function parseDzone(xml,callback){
     var results = [];
     console.log("massaging dzone");
-    debugger;
-    for(var i = 0; i < stories.length; i++){
-        var cur = stories[i];
-            //$ = cheerio.load(cur),
-            title = cur.title,
-            url = cur.url,
-            desc = cur.summary,
-            src = sources.dzone.domain,
-            img = "";
-        //TODO scrape real url
-        results.push(new Story(title, url, desc, src, img));
-    }
-    callback(results)
+    defaultParser(xml, callback);
 }
 
 function massageEchojs(stories,callback){
@@ -293,6 +229,20 @@ function massageSoylentnews(stories,callback){
         results.push(new Story(title, url, desc, src, img));
     }
     callback(results)
+}
+
+function defaultParser(xml, callback) {
+    var results = [],
+        $ = cheerio.load(xml, {xmlMode: true});
+    $("item").each(function(index, elem) {
+        var title = $(elem).find("title").text(),
+            url = $(elem).find("link").text();
+            //desc = summary("body").text().replace(" [ more › ]",""),
+            //src = sources.sfist.domain,
+            //img = summary("img").first().attr("src").replace("_restrict_width_110","");
+        results.push(new Story(title, url));
+    });
+    callback(results);
 }
 
 function rss(data, callback){

@@ -38,14 +38,8 @@ technology = {
         domain: "news.ycombinator",
         name: "Hacker News"
     },
-    'datatau': {
-        url : "http://datatau.com/rss",
-        tags : ["tech", "data"],
-        domain: "datatau",
-        name: "DataTau"
-    },
     'dzone': {
-        url : "http://feeds.dzone.com/dzone/frontpage",
+        url : "http://feeds.dzone.com/home",
         tags : ["tech"],
         domain: "dzone",
         name: "DZone"
@@ -99,5 +93,11 @@ later = {
         tags : ["SF"],
         domain: "7x7",
         name: "7x7"
+    },
+    'datatau': {
+        url : "http://www.datatau.com/rss",
+        tags : ["tech", "data"],
+        domain: "datatau",
+        name: "DataTau"
     }
 };
