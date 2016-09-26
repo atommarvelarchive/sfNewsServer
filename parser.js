@@ -33,9 +33,8 @@ function parse(domain, data, callback){
             parseEchojs(data, callback);
             break;
         case sources.lobsters.domain:
-            rss(data, function(parsed){
-                massageLobsters(parsed, callback);
-            })
+            console.log("parsing lobsters");
+            defaultParser(data, callback);
             break;
         case sources.slashdot.domain:
             rss(data, function(parsed){
