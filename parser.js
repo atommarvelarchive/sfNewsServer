@@ -158,12 +158,14 @@ function massageReddit(stories, callback){
             desc = cur.selftext,
             src = "reddit.com/r/"+cur.subreddit,
             img = cur.thumbnail,
-            comments = "http://reddit.com"+cur.permalink
-            meta = cur;
+            date = cur.created,
+            comments = "http://reddit.com"+cur.permalink;
         if(img === "self" || img === "default"){
             img = "https://www.redditstatic.com/icon.png";
+        } else {
+            img = "";
         }
-        results.push(new Story(title, url, desc, src, img, comments, meta));
+        results.push(new Story(title, url, desc, src, img, date, comments));
     }
     callback(results);
 }

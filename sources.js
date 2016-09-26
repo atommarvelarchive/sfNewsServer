@@ -27,7 +27,7 @@ sf = {
 
 technology = {
     'redditTech':{
-        url : "http://www.reddit.com/r/algorithms+analytics+angularjs+linux+linuxdev+crypto+machinelearning+entrepreneur+webdev+web_design+computerscience+reactjs+javascript+frontend+css/.json?limit=100",
+        url : "http://www.reddit.com/r/algorithms+analytics+androiddev+entrepreneur+webdev+web_design+computerscience+reactjs+javascript+frontend+css/.json?limit=100",
         tags : ["tech"],
         domain: "redditTech",
         name: "Reddit Tech"
