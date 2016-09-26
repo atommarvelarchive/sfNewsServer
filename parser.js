@@ -37,9 +37,8 @@ function parse(domain, data, callback){
             defaultParser(data, callback);
             break;
         case sources.slashdot.domain:
-            rss(data, function(parsed){
-                massageSlashdot(parsed, callback);
-            })
+            console.log("parsing slashdot");
+            defaultParser(data, callback);
             break;
         case sources.soylentnews.domain:
             rss(data, function(parsed){
