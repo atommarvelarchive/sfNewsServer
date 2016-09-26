@@ -16,6 +16,7 @@ module.exports = function(title, url, desc, src, img, date, comments, meta){
 
     function getMetaData(callback){
         var self = this;
+        if(!self.url) return;
         // TODO: fix whatever is making some img to not be properly populated
         request(self.url, function (error, response, html) {
             if (!error && response.statusCode == 200) {
@@ -35,12 +36,18 @@ module.exports = function(title, url, desc, src, img, date, comments, meta){
     function getImg(html) {
         var $ = cheerio.load(html),
             og = $('head > meta[property="og:image"]'),
-            twitter = $('head > meta[name="twitter:image:src"]');
+            twitter = $('head > meta[name="twitter:image"]');
+        // TODO: simplify these vars above to strings and run the selectors in the conditionals
         if(twitter.length > 0){
-            console.log("twitter");
             var url = twitter.first().attr("content");
             if(!(/http/).test(url)){
                 url = twitter.eq(1).attr("content");
+            }
+            this.img = url;
+        }else if($('head > meta[name="twitter:image:src"]').length > 0){
+            var url = $('head > meta[name="twitter:image:src"]').first().attr("content");
+            if(!(/http/).test(url)){
+                url = $('head > meta[name="twitter:image:src"]').eq(1).attr("content");
             }
             this.img = url;
         }else if(og.length > 0){
@@ -63,10 +70,10 @@ module.exports = function(title, url, desc, src, img, date, comments, meta){
             twitter = $('head > meta[name="twitter:description"]');
         if(twitter.length > 0){
             var desc = twitter.first().attr("content");
-            this.desc = desc;
+            this.desc = stringTrim(desc, trim);
         }else if(og.length > 0){
             var desc = og.first().attr("content");
-            this.desc = desc;
+            this.desc = stringTrim(desc, trim);
         }else{
             console.log(this.url + " does not have a social description");
         }

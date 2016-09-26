@@ -9,7 +9,7 @@ app.set('port', (process.env.PORT || 5000));
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
-app.get("/", function(req, res){    
+app.get("/", function(req, res){
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify(scraper.data, null, 4));
 });
@@ -19,5 +19,5 @@ app.listen(app.get('port'), function() {
 });
 
 //TODO: Schedule scraping
-scraper.scrape(sources["sfist"]);
+scraper.scrape(sources["sfweekly"]);
 //scraper.refreshAll();

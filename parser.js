@@ -9,25 +9,16 @@ var cheerio = require('cheerio'),
 function parse(domain, data, callback){
     switch(domain){
         case sources.sfusualsuspects.domain:
-            usualSuspects(data, callback);
-            break;
-        case sources['7x7'].domain:
-            rss(data, function(parsed){
-                massage7x7(parsed,callback);
-            })
+            parseUsualSuspects(data, callback);
             break;
         case sources.sfist.domain:
             parseSfist(data,callback);
             break;
         case sources.sfweekly.domain:
-            rss(data, function(parsed){
-                massageSfweekly(parsed,callback);
-            })
+            parseSfweekly(data,callback);
             break;
         case sources.sfgate.domain:
-            rss(data, function(parsed){
-                massageSfgate(parsed,callback);
-            })
+            parseSfgate(data, callback);
             break;
         case sources["redditTech"].domain:
             massageReddit(JSON.parse(data),callback);
@@ -74,7 +65,7 @@ function parse(domain, data, callback){
     }
 }
 
-function usualSuspects(data, callback){
+function parseUsualSuspects(data, callback){
     console.log("usual suspects..");
     var $ = cheerio.load(data),
         stories = $(".block"),
@@ -112,25 +103,9 @@ function massage7x7(stories, callback){
     callback(results);
 }
 
-function massageSfweekly(stories, callback){
+function parseSfweekly(xml, callback){
     var results = [];
-    console.log("massaging SFweekly");
-    for(var i = 0; i < stories.length; i++){
-        var cur = stories[i],
-            $ = cheerio.load(cur.summary),
-            title = cur.title,
-            url = cur.url,
-            desc = $("body").text().replace(" [ Read more ] [ Subscribe to the comments on this story ]",""),
-            src = sources.sfist.domain,
-            img = $("img").first().attr("src");
-        results.push(new Story(title, url, desc, src, img));
-    }
-    callback(results);
-}
-
-function parseSfist(xml, callback){
-    var results = [];
-    console.log("massaging sfist");
+    console.log("parsing SFWeekly");
     var $ = cheerio.load(xml, {xmlMode: true});
     $("item").each(function(index, elem) {
         var title = $(elem).find("title").text(),
@@ -143,18 +118,33 @@ function parseSfist(xml, callback){
     callback(results);
 }
 
-function massageSfgate(stories, callback){
+function parseSfist(xml, callback){
     var results = [];
-    console.log("massaging sfgate");
-    for(var i = 0; i < stories.length; i++){
-        var cur = stories[i],
-            title = cur.title,
-            url = cur.url,
-            desc = cur.summary,
-            src = sources.sfgate.domain,
-            img = "";
-        results.push(new Story(title, url, desc, src, img));
-    }
+    console.log("parsing sfist");
+    var $ = cheerio.load(xml, {xmlMode: true});
+    $("item").each(function(index, elem) {
+        var title = $(elem).find("title").text(),
+            url = $(elem).find("link").text();
+            //desc = summary("body").text().replace(" [ more › ]",""),
+            //src = sources.sfist.domain,
+            //img = summary("img").first().attr("src").replace("_restrict_width_110","");
+        results.push(new Story(title, url));
+    });
+    callback(results);
+}
+
+function parseSfgate(xml, callback){
+    var results = [];
+    console.log("parsing sfgate");
+    var $ = cheerio.load(xml, {xmlMode: true});
+    $("item").each(function(index, elem) {
+        var title = $(elem).find("title").text(),
+            url = $(elem).find("link").text();
+            //desc = summary("body").text().replace(" [ more › ]",""),
+            //src = sources.sfist.domain,
+            //img = summary("img").first().attr("src").replace("_restrict_width_110","");
+        results.push(new Story(title, url));
+    });
     callback(results);
 }
 

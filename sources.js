@@ -17,12 +17,6 @@ sf = {
         domain: "sfgate",
         name: "SFGate"
     },
-    '7x7': {
-        url : "http://feeds.feedburner.com/7x7/bjKm?format=xml",
-        tags : ["SF"],
-        domain: "7x7",
-        name: "7x7"
-    },
     'sfweekly': {
         url : "http://www.sfweekly.com/sanfrancisco/Rss.xml?section=2124627",
         tags : ["SF"],
@@ -99,5 +93,11 @@ later = {
         tags : ["SF"],
         domain: "hoodline",
         name: "Hoodline"
+    },
+    '7x7': {
+        url : "[this rss is outdated]http://feeds.feedburner.com/7x7/bjKm?format=xml",
+        tags : ["SF"],
+        domain: "7x7",
+        name: "7x7"
     }
 };
