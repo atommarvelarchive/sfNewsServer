@@ -19,5 +19,5 @@ app.listen(app.get('port'), function() {
 });
 
 //TODO: Schedule scraping
-scraper.scrape(sources["slashdot"]);
-//scraper.refreshAll();
+//scraper.scrape(sources["soylentnews"]);
+scraper.refreshAll();
