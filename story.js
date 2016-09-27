@@ -35,25 +35,25 @@ module.exports = function(title, url, desc, src, img, date, comments, meta){
 
     function getImg(html) {
         var $ = cheerio.load(html),
-            og = $('head > meta[property="og:image"]'),
-            twitter = $('head > meta[name="twitter:image"]');
-        // TODO: simplify these vars above to strings and run the selectors in the conditionals
-        if(twitter.length > 0){
-            var url = twitter.first().attr("content");
+            og = 'head > meta[property="og:image"]',
+            twitter = 'head > meta[name="twitter:image"]',
+            twitterSrc = 'head > meta[name="twitter:image:src"]';
+        if($(twitter).length > 0){
+            var url = $(twitter).first().attr("content");
             if(!(/http/).test(url)){
-                url = twitter.eq(1).attr("content");
+                url = $(twitter).eq(1).attr("content");
             }
             this.img = url;
-        }else if($('head > meta[name="twitter:image:src"]').length > 0){
-            var url = $('head > meta[name="twitter:image:src"]').first().attr("content");
+        }else if($(twitterSrc).length > 0){
+            var url = $(twitterSrc).first().attr("content");
             if(!(/http/).test(url)){
-                url = $('head > meta[name="twitter:image:src"]').eq(1).attr("content");
+                url = $(twitterSrc).eq(1).attr("content");
             }
             this.img = url;
-        }else if(og.length > 0){
-            var url = og.first().attr("content");
+        }else if($(og).length > 0){
+            var url = $(og).first().attr("content");
             if(!(/http/).test(url)){
-                url = og.eq(1).attr("content");
+                url = $(og).eq(1).attr("content");
             }
             this.img = url;
         }else{

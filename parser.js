@@ -4,7 +4,6 @@ var cheerio = require('cheerio'),
     Story = require('./story.js');
 
 //TODO: publish time
-//TODO: don't use rss, just use cheerio... rss missing a ton of stuff that would be nice
 
 function parse(domain, data, callback){
     switch(domain){
