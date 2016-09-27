@@ -1,0 +1,362 @@
+{
+    "www.businessinsider.com": {
+        "url": "http://feeds2.feedburner.com/businessinsider",
+        "src": "http://www.businessinsider.com",
+        "name": "Feedburner",
+        "desc": "BI Feed for Feedburner",
+        "domain": "www.businessinsider.com"
+    },
+    "feeds.feedburner.com": {
+        "url": "http://feeds.feedburner.com/cocoacontrols",
+        "src": "",
+        "name": "",
+        "desc": "",
+        "domain": "feeds.feedburner.com"
+    },
+    "androiduiux.com": {
+        "url": "https://androiduiux.com/feed/",
+        "src": "https://androiduiux.com",
+        "name": "#androiduiux",
+        "desc": "",
+        "domain": "androiduiux.com"
+    },
+    "blog.codinghorror.com": {
+        "url": "http://feeds.feedburner.com/codinghorror",
+        "src": "https://blog.codinghorror.com/",
+        "name": "Coding Horror",
+        "desc": "programming and human factors",
+        "domain": "blog.codinghorror.com"
+    },
+    "tympanus.net": {
+        "url": "http://feeds2.feedburner.com/tympanus",
+        "src": "http://tympanus.net/codrops",
+        "name": "Codrops",
+        "desc": "Useful resources and inspiration for creative minds",
+        "domain": "tympanus.net"
+    },
+    "blog.stylingandroid.com": {
+        "url": "http://feeds.feedburner.com/StylingAndroid",
+        "src": "https://blog.stylingandroid.com",
+        "name": "Styling Android",
+        "desc": "A technical guide to improving the UI and UX of Android apps",
+        "domain": "blog.stylingandroid.com"
+    },
+    "www.androidhive.info": {
+        "url": "http://www.androidhive.info/feed/",
+        "src": "http://www.androidhive.info",
+        "name": "androidhive",
+        "desc": "",
+        "domain": "www.androidhive.info"
+    },
+    "us2.campaign-archive.com": {
+        "url": "http://us2.campaign-archive1.com/feed?u=887caf4f48db76fd91e20a06d&id=4eb677ad19",
+        "src": "http://us2.campaign-archive.com/feed?u=887caf4f48db76fd91e20a06d&id=4eb677ad19",
+        "name": "Android Weekly Archive Feed",
+        "desc": "",
+        "domain": "us2.campaign-archive.com"
+    },
+    "jakewharton.com": {
+        "url": "http://jakewharton.com/feed.xml",
+        "src": "",
+        "name": "",
+        "desc": "",
+        "domain": "jakewharton.com"
+    },
+    "500.co": {
+        "url": "http://500.co/feed/",
+        "src": "http://500.co",
+        "name": "500 Startups",
+        "desc": "500 Strong",
+        "domain": "500.co"
+    },
+    "medium.com": {
+        "url": "https://medium.com/feed/@jpardogo",
+        "src": "https://medium.com/@jpardogo?source=rss-d8b94a0f0f53------2",
+        "name": "Stories by JPARDOGO on Medium",
+        "desc": "Stories by JPARDOGO on Medium",
+        "domain": "medium.com"
+    },
+    "gmariotti.blogspot.com": {
+        "url": "http://gmariotti.blogspot.com/feeds/posts/default?alt=rss",
+        "src": "http://gmariotti.blogspot.com/",
+        "name": "ONGOING DEV",
+        "desc": "Quick tips about Android Development",
+        "domain": "gmariotti.blogspot.com"
+    },
+    "www.joyent.com": {
+        "url": "https://www.joyent.com/blog/feed",
+        "src": "https://www.joyent.com/blog",
+        "name": "Joyeur Article Feed",
+        "desc": "Article feed for Joyeur, the Joyent blog.",
+        "domain": "www.joyent.com"
+    },
+    "realm.io": {
+        "url": "https://feeds.feedburner.com/realmio",
+        "src": "https://realm.io",
+        "name": "Mobile Development News, from Realm",
+        "desc": "The latest updates from events and developers from around the world, brought to you by Realm. Covering Android, iOS, React Native, Xamarin, &amp; more.",
+        "domain": "realm.io"
+    },
+    "commonsware.com": {
+        "url": "https://commonsware.com/blog/feed.atom",
+        "src": "",
+        "name": "",
+        "desc": "",
+        "domain": "commonsware.com"
+    },
+    "bothsidesofthetable.com": {
+        "url": "https://bothsidesofthetable.com/feed",
+        "src": "https://bothsidesofthetable.com?source=rss----97f98e5df342---4",
+        "name": "Both Sides of the Table - Medium",
+        "desc": "Perspectives of a 2x entrepreneur turned VC at @UpfrontVC, the largest and most active early-stage fund in Southern California. Snapchat: msuster - Medium",
+        "domain": "bothsidesofthetable.com"
+    },
+    "www.npr.org": {
+        "url": "http://www.npr.org/rss/rss.php?id=139941248",
+        "src": "http://www.npr.org/sections/thesalt/",
+        "name": "The Salt : NPR",
+        "desc": "The Salt is a blog from the NPR Science Desk about what we eat and why we eat it. We serve up food stories with a side of skepticism that may provoke you or just make you smile.",
+        "domain": "www.npr.org"
+    },
+    "www.sfgate.com": {
+        "url": "http://www.sfgate.com/bayarea/feed/Bay-Area-News-429.php",
+        "src": "http://www.sfgate.com/bayarea/feed/Bay-Area-News-429.php",
+        "name": "Bay Area News",
+        "desc": "",
+        "domain": "www.sfgate.com"
+    },
+    "stacktips.com": {
+        "url": "http://stacktips.com/feed",
+        "src": "http://stacktips.com",
+        "name": "Stacktips",
+        "desc": "How to Guides, Tutorials & Code Snippets",
+        "domain": "stacktips.com"
+    },
+    "techblog.netflix.com": {
+        "url": "http://techblog.netflix.com/rss.xml",
+        "src": "http://techblog.netflix.com/",
+        "name": "The Netflix Tech Blog",
+        "desc": "",
+        "domain": "techblog.netflix.com"
+    },
+    "stackabuse.com": {
+        "url": "http://stackabuse.com/rss/",
+        "src": "http://stackabuse.com/",
+        "name": "Stack Abuse",
+        "desc": "News, articles, and ideas for software engineers and web developers. ",
+        "domain": "stackabuse.com"
+    },
+    "slashdot.org": {
+        "url": "http://rss.slashdot.org/slashdot/slashdotMain?format=xml",
+        "src": "https://slashdot.org/",
+        "name": "Slashdot",
+        "desc": "News for nerds, stuff that matters",
+        "domain": "slashdot.org"
+    },
+    "lobste.rs": {
+        "url": "https://lobste.rs/rss",
+        "src": "https://lobste.rs/",
+        "name": "Lobsters",
+        "desc": "",
+        "domain": "lobste.rs"
+    },
+    "us9.campaign-archive.com": {
+        "url": "http://us9.campaign-archive1.com/feed?u=510d6f81b948a39e0d9c32ec3&id=7b3139f09c",
+        "src": "http://us9.campaign-archive.com/feed?u=510d6f81b948a39e0d9c32ec3&id=7b3139f09c",
+        "name": "Microservice Weekly Archive Feed",
+        "desc": "",
+        "domain": "us9.campaign-archive.com"
+    },
+    "reactjs.co": {
+        "url": "https://reactjs.co/feed/",
+        "src": "https://reactjs.co",
+        "name": "ReactJS",
+        "desc": "The ReactJS blog",
+        "domain": "reactjs.co"
+    },
+    "www.daedtech.com": {
+        "url": "http://feeds.feedblitz.com/daedtech/www",
+        "src": "http://www.daedtech.com",
+        "name": "DaedTech",
+        "desc": "Stories about Software",
+        "domain": "www.daedtech.com"
+    },
+    "\nhttp:": {
+        "url": "http://www.echojs.com/rss",
+        "src": "\nhttp://www.echojs.com\n",
+        "name": "\nEcho JS\n",
+        "desc": "Description pending",
+        "domain": "\nhttp:"
+    },
+    "changelog.com": {
+        "url": "https://changelog.com/feed/",
+        "src": "https://changelog.com",
+        "name": "Changelog",
+        "desc": "Open source moves fast. Keep up.",
+        "domain": "changelog.com"
+    },
+    "cocoawithlove.com": {
+        "url": "http://www.cocoawithlove.com/feed.xml",
+        "src": "http://cocoawithlove.com/",
+        "name": "Cocoa with Love",
+        "desc": "Matt Gallagher shares code and programming tips for Mac OS X, iOS, watchOS and tvOS in Swift and other languages.\n",
+        "domain": "cocoawithlove.com"
+    },
+    "www.producthunt.com": {
+        "url": "https://www.producthunt.com/feed",
+        "src": "",
+        "name": "",
+        "desc": "",
+        "domain": "www.producthunt.com"
+    },
+    "archives.sfweekly.com": {
+        "url": "http://www.sfweekly.com/sanfrancisco/Rss.xml?section=2124627",
+        "src": "http://archives.sfweekly.com",
+        "name": "News, SF Weekly",
+        "desc": "Local San Francisco news, events, music, movies, restaurants, and reviews from SF Weekly",
+        "domain": "archives.sfweekly.com"
+    },
+    "blog.hackerrank.com": {
+        "url": "https://blog.hackerrank.com/feed/",
+        "src": "https://blog.hackerrank.com",
+        "name": "HackerRank Blog",
+        "desc": "Thoughtful articles for the largest community of skilled programmers",
+        "domain": "blog.hackerrank.com"
+    },
+    "developer.apple.com": {
+        "url": "https://developer.apple.com/swift/blog/news.rss"
+    },
+    "nodesource.com": {
+        "url": "https://nodesource.com/blog/rss/",
+        "src": "https://nodesource.com/blog/",
+        "name": "The Back Channel by NodeSource | The Enterprise Node Company™ Providing Enterprise Node.js Training, Support, Software & Consulting, Worldwide",
+        "desc": "Node.js Support, Training and Consulting for the Enterprise, Worldwide",
+        "domain": "nodesource.com"
+    },
+    "nodeweekly.com": {
+        "url": "http://nodeweekly.com/rss/1mp9kce3",
+        "src": "http://nodeweekly.com/",
+        "name": "Node Weekly",
+        "desc": "A free, once–weekly e-mail round-up of Node.js news and articles",
+        "domain": "nodeweekly.com"
+    },
+    "soylentnews.org": {
+        "url": "https://soylentnews.org/index.rss",
+        "src": "https://soylentnews.org/",
+        "name": "SoylentNews",
+        "desc": "SoylentNews is people",
+        "domain": "soylentnews.org"
+    },
+    "sfist.com": {
+        "url": "http://feeds.gothamistllc.com/SFist",
+        "src": "http://sfist.com/",
+        "name": "SFist",
+        "desc": "SFist is a website about  San Francisco.Editor: Jay Barmann Publisher: Gothamist",
+        "domain": "sfist.com"
+    },
+    "news.ycombinator.com": {
+        "url": "https://news.ycombinator.com/rss",
+        "src": "https://news.ycombinator.com/",
+        "name": "Hacker News",
+        "desc": "Links for the intellectually curious, ranked by readers.",
+        "domain": "news.ycombinator.com"
+    },
+    "react.statuscode.com": {
+        "url": "http://react.statuscode.com/rss/1i3k3bah",
+        "src": "http://react.statuscode.com/",
+        "name": "React Statuscode",
+        "desc": "",
+        "domain": "react.statuscode.com"
+    },
+    "mobilewebweekly.co": {
+        "url": "http://mobilewebweekly.co/rss/1mipnin1",
+        "src": "http://mobilewebweekly.co/",
+        "name": "Mobile Web Weekly",
+        "desc": "A weekly round-up of the releases, articles, and links that affect Web developers working on the mobile-facing Web",
+        "domain": "mobilewebweekly.co"
+    },
+    "dzone.com": {
+        "url": "http://feeds.dzone.com/home",
+        "src": "https://dzone.com",
+        "name": "DZone.com Feed",
+        "desc": "Recent posts on DZone.com",
+        "domain": "dzone.com"
+    },
+    "scotch.io": {
+        "url": "https://feeds.feedblitz.com/scotch_io",
+        "src": "https://scotch.io",
+        "name": "Scotch.io",
+        "desc": "Scotch.io",
+        "domain": "scotch.io"
+    },
+    "blog.risingstack.com": {
+        "url": "https://blog.risingstack.com/rss/",
+        "src": "http://blog.risingstack.com/",
+        "name": "RisingStack Engineering",
+        "desc": "Engineering blog for all-the-things JavaScript/DevOps/IoT\n",
+        "domain": "blog.risingstack.com"
+    },
+    "www.raywenderlich.com": {
+        "url": "https://www.raywenderlich.com/feed",
+        "src": "https://www.raywenderlich.com",
+        "name": "Ray WenderlichRay Wenderlich",
+        "desc": "Tutorials for iPhone / iOS Developers and Gamers",
+        "domain": "www.raywenderlich.com"
+    },
+    "javascriptweekly.com": {
+        "url": "http://javascriptweekly.com/rss/1nk15gj7",
+        "src": "http://javascriptweekly.com/",
+        "name": "JavaScript Weekly",
+        "desc": "A free, once–weekly e-mail round-up of JavaScript news and articles.",
+        "domain": "javascriptweekly.com"
+    },
+    "indieiosfocus.curated.co": {
+        "url": "https://indieiosfocus.curated.co/issues.rss",
+        "src": "https://indieiosfocus.curated.co/issues",
+        "name": "Indie iOS Focus Weekly",
+        "desc": "Looking for the best iOS dev links, tutorials, &amp; tips beyond the usual news? Curated by Chris Beshore. Published every Thursday. Support on Patreon!",
+        "domain": "indieiosfocus.curated.co"
+    },
+    "html5weekly.com": {
+        "url": "http://html5weekly.com/rss/1binbh86",
+        "src": "http://html5weekly.com/",
+        "name": "FrontEnd Focus",
+        "desc": "A once–weekly roundup of the best frontend news, articles and tutorials. HTML, CSS, WebGL, Canvas, browser technology, and more.",
+        "domain": "html5weekly.com"
+    },
+    "iosdevweekly.com": {
+        "url": "http://iosdevweekly.com/issues.rss",
+        "src": "http://iosdevweekly.com/issues",
+        "name": "iOS Dev Weekly",
+        "desc": "Subscribe to a hand-picked round up of the best iOS development links every week. Curated by Dave Verwer and published every Friday. Free.",
+        "domain": "iosdevweekly.com"
+    },
+    "www.cimgf.com": {
+        "url": "http://www.cimgf.com/feed/",
+        "src": "http://www.cimgf.com",
+        "name": "Cocoa Is My Girlfriend",
+        "desc": "Taglines are for Windows programmers",
+        "domain": "www.cimgf.com"
+    },
+    "oleb.net": {
+        "url": "https://oleb.net/blog/atom.xml",
+        "src": "",
+        "name": "",
+        "desc": "",
+        "domain": "oleb.net"
+    },
+    "ww2.kqed.org": {
+        "url": "https://ww2.kqed.org/news/feed/",
+        "src": "https://ww2.kqed.org/news",
+        "name": "KQED News",
+        "desc": "KQED Public Media for Northern CA",
+        "domain": "ww2.kqed.org"
+    },
+    "www.reddit.com": {
+        "url": "https://www.reddit.com/r/virtualreality.rss",
+        "src": "",
+        "name": "",
+        "desc": "",
+        "domain": "www.reddit.com"
+    }
+}

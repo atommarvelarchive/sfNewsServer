@@ -94,9 +94,12 @@ function massageDatatau(stories,callback){
 function defaultParser(xml, callback) {
     var results = [],
         $ = cheerio.load(xml, {xmlMode: true});
-    $("item").each(function(index, elem) {
+    getItemOrEntry($).each(function(index, elem) {
         var title = $(elem).find("title").text().trim(),
             url = $(elem).find("link").text().trim();
+        if(!url || 0 === url.length) {
+            url = $(elem).find("link").attr("href");
+        }
             // TODO: add description
             // //TODO: add publish time
             //desc = summary("body").text().replace(" [ more › ]",""),
@@ -105,6 +108,15 @@ function defaultParser(xml, callback) {
         results.push(new Story(title, url));
     });
     callback(results);
+}
+
+function getItemOrEntry($) {
+    var item = $("item");
+    if (item.length > 0) {
+        return item;
+    } else {
+        return $("entry");
+    }
 }
 
 exports.parse = parse;

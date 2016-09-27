@@ -13,5 +13,8 @@
     "express": "^4.12.4",
     "request": "^2.57.0",
     "xml-parse-from-string": "*"
+  },
+  "devDependencies": {
+    "url-parse": "^1.1.3"
   }
 }

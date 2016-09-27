@@ -27,7 +27,7 @@ sf = {
 
 technology = {
     'redditTech':{
-        url : "http://www.reddit.com/r/algorithms+analytics+androiddev+entrepreneur+webdev+web_design+computerscience+reactjs+javascript+frontend+css/.json?limit=100",
+        url : "http://www.reddit.com/r/algorithms+analytics+androiddev+entrepreneur+webdev+node+web_design+computerscience+reactjs+javascript+frontend+css/.json?limit=100",
         tags : ["tech"],
         domain: "redditTech",
         name: "Reddit Tech"
@@ -79,7 +79,32 @@ technology = {
         tags: ["tech", "iOS"],
         domain: "iosdevweekly",
         name: "iOS Dev Weekly"
+    },
+    "cimgf": {
+        url: "http://www.cimgf.com/feed/",
+        tags: ["tech", "iOS"],
+        domain: "cimgf",
+        name: "Cocoa Is My Girlfriend"
+    },
+    "cocoacontrols": {
+        url: "http://feeds.feedburner.com/cocoacontrols",
+        tags: ["tech", "iOS"],
+        domain: "cocoacontrols",
+        name: "Cocoa Controls"
+    },
+    "oleb" : {
+        url: "https://oleb.net/blog/atom.xml",
+        tags: ["tech", "iOS"],
+        domain: "oleb",
+        name: "Ole Begemann"
+    },
+    "appleblog" : {
+        url: "https://developer.apple.com/swift/blog/news.rss",
+        tags: ["tech", "iOS"],
+        domain: "apple",
+        name: "Swift Blog - Apple Developer"
     }
+
 };
 var sources = {};
 
@@ -111,5 +136,11 @@ later = {
         tags : ["tech", "data"],
         domain: "datatau",
         name: "DataTau"
+    },
+    "nshipster": {
+        url: "http://nshipster.com/feed.xml",
+        tags: ["tech", "iOS"],
+        domain: "nshipster",
+        name: "NSHipster"
     }
 };
