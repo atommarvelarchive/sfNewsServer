@@ -63,7 +63,7 @@ technology = {
         name: "Slashdot"
     },
     'soylentnews': {
-        url : "https://soylentnews.org/index.rss",
+        url: "https://soylentnews.org/index.rss",
         tags : ["tech"],
         domain: "soylentnews",
         name: "Soylent News"
@@ -114,6 +114,9 @@ for(var source in sf){
 for(var source in technology){
     sources[source] = technology[source];
 }
+
+var aggregat
+
 
 module.exports = sources;
 

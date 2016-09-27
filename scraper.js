@@ -1,14 +1,14 @@
 module.exports = function(data){
     var parser = require('./parser.js'),
-        sources = require('./sources.js'),
+        feeds = require('./feeds.json'),
         request = require('request');
     fetchCount = 0,
-    fetchCap = 1,
-    data = sources;
+    fetchCap = 5,
+    data = feeds;
 
     function refreshAll(){
-        for(source in sources){
-            refresh(sources[source]);
+        for(feed in feeds){
+            refresh(feeds[feed]);
         }
     }
 
@@ -22,6 +22,7 @@ module.exports = function(data){
             } else{
                 console.log(source.url + " didn't give a feed");
                 console.log(error);
+                fetchCount--;
             }
 
         });
@@ -43,6 +44,7 @@ module.exports = function(data){
         if(fetchCount < fetchCap){
             scrape(source);
         } else{
+            console.log("fetch count is too high");
             setTimeout(refresh.bind(this,source), 500);
         }
     }

@@ -1,6 +1,6 @@
 var data = {};
     express = require('express'),
-    sources = require('./sources.js'),
+    feeds = require('./feeds.json'),
     scraper = require('./scraper.js')(data),
     app = express();
     require('events').EventEmitter.prototype._maxListeners = 100;
@@ -19,5 +19,5 @@ app.listen(app.get('port'), function() {
 });
 
 //TODO: Schedule scraping
-scraper.scrape(sources["nshipster"]);
-//scraper.refreshAll();
+//scraper.scrape(feeds["www.producthunt.com"]);
+scraper.refreshAll();

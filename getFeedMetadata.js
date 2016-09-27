@@ -98,7 +98,7 @@ function getMetaData(url) {
       var $ = cheerio.load(xml, {xmlMode: true});
       feed.src = $("channel > link").text();
       if (!feed.src || 0 === feed.src.length) {
-        
+
       }
       feed.name = $("channel > title").text();
       feed.desc = $("channel > description").text();
@@ -117,7 +117,7 @@ function getMetaData(url) {
 
 function saveToFile(data) {
   console.log("saving data...");
-  fs.writeFileSync("feeds.json", JSON.stringify(result, null, 4));
+  fs.writeFileSync("feeds1.json", JSON.stringify(result, null, 4));
 }
 
 function main() {
