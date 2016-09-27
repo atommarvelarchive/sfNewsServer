@@ -67,6 +67,18 @@ technology = {
         tags : ["tech"],
         domain: "soylentnews",
         name: "Soylent News"
+    },
+    "cocoawithlove": {
+        url: "http://www.cocoawithlove.com/feed.xml",
+        tags: ["tech", "iOS"],
+        domain: "cocoawithlove",
+        name: "Cocoa with Love"
+    },
+    "iosdevweekly": {
+        url: "http://iosdevweekly.com/issues.rss",
+        tags: ["tech", "iOS"],
+        domain: "iosdevweekly",
+        name: "iOS Dev Weekly"
     }
 };
 var sources = {};

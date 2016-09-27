@@ -30,6 +30,7 @@ module.exports = function(data){
     function saveData(source, parsed){
         data[source.domain].stories = [];
         for(var i = 0; i<parsed.length; i++){
+            // TODO: queue this instead of firing all at once
             parsed[i].getMetaData(function(story){
                 data[source.domain].stories.push(story);
             });

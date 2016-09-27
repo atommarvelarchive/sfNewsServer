@@ -3,8 +3,6 @@ var cheerio = require('cheerio'),
     sources = require('./sources.js'),
     Story = require('./story.js');
 
-//TODO: publish time
-
 function parse(domain, data, callback){
     switch(domain){
         case sources.sfusualsuspects.domain:
@@ -99,7 +97,8 @@ function defaultParser(xml, callback) {
     $("item").each(function(index, elem) {
         var title = $(elem).find("title").text().trim(),
             url = $(elem).find("link").text().trim();
-            // TODO: description
+            // TODO: add description
+            // //TODO: add publish time
             //desc = summary("body").text().replace(" [ more › ]",""),
             //src = sources.sfist.domain,
             //img = summary("img").first().attr("src").replace("_restrict_width_110","");
