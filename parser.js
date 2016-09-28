@@ -100,8 +100,9 @@ function defaultParser(xml, callback) {
         if(!url || 0 === url.length) {
             url = $(elem).find("link").attr("href");
         }
-            // TODO: add description
-            // //TODO: add publish time
+            // TODO:50 review all feeds
+            // TODO:20 add description
+            // TODO:30 add publish time
             //desc = summary("body").text().replace(" [ more › ]",""),
             //src = sources.sfist.domain,
             //img = summary("img").first().attr("src").replace("_restrict_width_110","");

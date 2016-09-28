@@ -1,10 +1,22 @@
-var cheerio = require('cheerio'),
-    request = require('request');
+"use strict";
+const cheerio = require('cheerio'),
+    RequestSingleton = require('./request-singleton'),
+    trim = 140;
 
-module.exports = function(title, url, desc, src, img, date, comments, meta){
-    var trim = 140;
 
-    function stringTrim(str, trim){
+class Story {
+    constructor(title = "", url = "", desc = "", src = "", img = "", date = 0, comments = {}, meta = {}) {
+        this.title = title;
+        this.url = url;
+        this.desc = this.stringTrim(desc, trim);
+        this.src = src;
+        this.img = img;
+        this.date = date;
+        this.comments = comments;
+        this.meta = meta;
+    }
+
+    stringTrim(str, trim){
         if(!str || 0 === str.length) return "";
        var concat = "...";
        if(str.length > trim-concat.length){
@@ -14,7 +26,7 @@ module.exports = function(title, url, desc, src, img, date, comments, meta){
        }
     }
 
-    function isHtmlResponse(response) {
+    isHtmlResponse(response) {
         debugger;
         if (!response.headers["content-type"].includes("text/html")) {
             console.log("this item has content-type "+response.headers["content-type"]);
@@ -23,28 +35,29 @@ module.exports = function(title, url, desc, src, img, date, comments, meta){
         return true;
     }
 
-    function getMetaData(callback){
-        var self = this;
-        if(!self.url) return;
-        // TODO: fix whatever is making some img to not be properly populated
+    getMetaData(callback){
+        if(!this.url) return;
+        // TODO:70 fix whatever is making some img to not be properly populated
         //console.log("getting Metadata for"+this.url);
-        request(self.url, function (error, response, html) {
-            if (!error && response.statusCode == 200) {
-                var isHtml = isHtmlResponse(response);
-                if(isHtml && self.img === ""){
-                    getImg.apply(self, [html]);
-                }
-                if (isHtml && self.desc === ""){
-                    getDesc.apply(self, [html]);
-                }
-            } else{
-                //console.log("failed to load for meta data: "+self.url);
+
+        RequestSingleton.addToQueue(this.url)
+        .then((results) => {
+            var [response, html] = results;
+            var isHtml = this.isHtmlResponse(response);
+            if(isHtml && this.img === ""){
+                this.getImg.apply(this, [html]);
             }
+            if (isHtml && this.desc === ""){
+                this.getDesc.apply(this, [html]);
+            }
+        })
+        .catch((error) => {
+            //console.log("failed to load for meta data: "+this.url);
         });
-        callback(self);
+        callback(this);
     }
 
-    function getImg(html) {
+    getImg(html) {
         //console.log("getting Img for "+this.url);
         var $ = cheerio.load(html),
             og = 'head > meta[property="og:image"]',
@@ -76,33 +89,21 @@ module.exports = function(title, url, desc, src, img, date, comments, meta){
         }
     }
 
-    function getDesc(html) {
+    getDesc(html) {
         //console.log("getting Desc for "+this.url);
         var $ = cheerio.load(html),
             og = $('head > meta[property="og:description"]'),
             twitter = $('head > meta[name="twitter:description"]');
         if(twitter.length > 0){
             var desc = twitter.first().attr("content");
-            this.desc = stringTrim(desc, trim);
+            this.desc = this.stringTrim(desc, trim);
         }else if(og.length > 0){
             var desc = og.first().attr("content");
-            this.desc = stringTrim(desc, trim);
+            this.desc = this.stringTrim(desc, trim);
         }else{
             //console.log(this.url + " does not have a social description");
         }
     }
-
-    this.title = title;
-    this.url = url;
-    this.desc = stringTrim(desc, trim);
-    this.src = src || "";
-    this.img = img || "";
-    this.getMetaData = getMetaData;
-    if(comments){
-        this.comments = comments;
-    }
-    if(meta){
-        this.meta = meta;
-    }
-    return this;
 }
+
+module.exports = Story;

@@ -17,3 +17,4 @@ node index.js
 * add DB
 * use npm's article to get article text
 * create a separate function for getting article text and getting img
+* create a central request queue

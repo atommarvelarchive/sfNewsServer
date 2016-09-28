@@ -18,6 +18,8 @@ app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'));
 });
 
-//TODO: Schedule scraping
+//TODO:40 Schedule frefresh of feeds
+//TODO:10 store articles in a db
+//TODO:60 create a more fleshed out api
 //scraper.scrape(feeds["www.producthunt.com"]);
 scraper.refreshAll();
